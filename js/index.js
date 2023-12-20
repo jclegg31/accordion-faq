@@ -1,35 +1,31 @@
 const accordion = document.getElementsByClassName('accordion');
-let activeAccordion = null; //no accordion is active
+let activeAccordion = null; // no accordion is active
 
-for (i = 0; i < accordion.length; i++) {
+for (let i = 0; i < accordion.length; i++) {
   accordion[i].addEventListener('click', function () {
-    //checks if the clicked accordion is not the same as the currently active one
-    if (this !== activeAccordion) {
-      //close previously opened accordion if there is an active accordion and it's not null
+    const isAccordionActive = this.classList.contains('active');
+
+    // Close all accordions if the clicked one is already open
+    if (isAccordionActive) {
+      this.classList.remove('active');
+      const content = this.querySelector('.accordion-content p');
+      content.style.height = '0';
+      activeAccordion = null;
+    } else {
+      // Close the previously opened accordion
       if (activeAccordion) {
         activeAccordion.classList.remove('active');
         activeAccordion.querySelector('.accordion-content p').style.height =
           '0';
       }
 
-      //Open the clicked accordion
-      this.classList.toggle('active');
-      //This selects the <p> element inside the clicked accordion's content.
+      // Open the clicked accordion
+      this.classList.add('active');
       const content = this.querySelector('.accordion-content p');
-      //It sets the height of the <p> element to its full height, effectively showing the content.
       content.style.height = content.scrollHeight + 'px';
 
-      // It updates the activeAccordion variable to point
-      // to the accordion that has been clicked, making it the new active accordion.
+      // Update the activeAccordion reference
       activeAccordion = this;
-    } else {
-      // Toggle the clicked accordion if it was the active one
-      this.classList.toggle('active');
-      const content = this.querySelector('.accordion-content p');
-      content.style.height = content.scrollHeight + 'px';
-
-      // Clear the activeAccordion reference because now no accordion is open.
-      activeAccordion = null;
     }
   });
 }

@@ -3,6 +3,8 @@
   --bg-container: hsl(0, 0%, 100%);
   --font-graypurple: hsl(292, 16%, 49%);
   --darkpurple: hsl(292, 42%, 14%);
+
+  --bright-purple: #ad28eb;
 }
 
 body {
@@ -65,6 +67,8 @@ hr {
 .accordion-heading {
   display: flex;
   justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
 }
 
 .accordion-heading img {
@@ -77,6 +81,33 @@ hr {
   color: var(--darkpurple);
 }
 
+.accordion-heading h2:hover,
+.accordion.active .accordion-heading h2 {
+  color: var(--darkpurple);
+  cursor: pointer;
+}
+
+.accordion-heading h2:hover {
+  color: var(--bright-purple);
+  cursor: pointer;
+}
+
+.accordion-heading::before {
+  content: '';
+  background-image: url('../assets/images/icon-plus.svg');
+  background-size: 20px; /* Set the desired width */
+  width: 20px; /* Set the width of the container */
+  height: 20px; /* Set the height of the container */
+  display: inline-block;
+  margin-right: 10px;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.accordion.active .accordion-heading::before {
+  background-image: url('../assets/images/icon-minus.svg');
+}
+
 .accordion-content p {
   font-size: 10px;
   line-height: 1.4;
@@ -84,7 +115,6 @@ hr {
   height: 0;
   overflow: hidden;
   transition: 0.5s;
-  /* display: none; */
 }
 
 .accordion.active .accordion-content p {
@@ -99,4 +129,7 @@ hr {
 
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+
+@media only screen and (max-width: 600px) {
 }
