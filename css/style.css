@@ -132,4 +132,33 @@ hr {
 }
 
 @media only screen and (max-width: 600px) {
+  hr {
+    width: 275px;
+    margin-bottom: 25px;
+  }
+
+  .main-container {
+    width: 375px;
+    height: 85vh;
+    background-image: url('../assets/images/background-pattern-mobile.svg');
+  }
+
+  .content-container {
+    width: 325px;
+    height: 450px;
+  }
+
+  .content-header {
+    font-size: 20px;
+  }
+
+  .accordion-wrapper {
+    width: 275px;
+  }
+
+  .accordion-heading h2 {
+    font-size: 14px;
+    width: 200px;
+    margin-top: 0;
+  }
 }
